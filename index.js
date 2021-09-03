@@ -86,7 +86,7 @@ client.on('message', async message => {
             .setColor("RANDOM")
             .setDescription(`Invitations de ${member.user.tag}`)
             .addField(`Nombre d'invitations`, index.toString())
-            .addField(`Soon`)
+            .addField(`Soon`, `discord.gg/pixelfr`)
             .setTitle(`Invitations de ${member.user.tag}`)
 
             message.channel.send(inviteEmbed)
@@ -94,6 +94,6 @@ client.on('message', async message => {
             return console.log(e)
         }
     }
-})
+});
         
 client.login(process.env.TOKEN);
