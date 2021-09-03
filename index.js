@@ -61,5 +61,39 @@ client.on('message', (msg) => {
         msg.channel.send(`**__Bonjour à tous,__**  :wave: \n\n  :round_pushpin:**Merci à tous pour les __700 Membres__ c'est __incroyable__ !**\n        **Un concours a été lancé il reste des places , suffit de créer un ticket !** \n \n**Bonne journée à vous , Cordialement le Staff :heart: **`);
     } 
 });
+
+const prefix = "!"
+
+client.on('message', async message => {
+    let args = message.content.substring(prefix.length).split(" ");
+
+     if (message.content.startsWith(`${prefix}invites`)) {
+        try {
+            let member = message.mentions.members.first() || message.member;
+            let invites = await message.guild.fetchInvites();
+            let memberInvites = invites.filter(i => i.inviter && i.inviter.id === member.user.id);
+
+            if (memberInvites.size <= 0) {
+                return message.channel.send(`${member.user.tag} na invité personne sur ${message.guild.name} !`, (member === message.author ? null : member));
+            } 
+
+            let content = memberInvites.map(i => i.code).join("\n")
+            let index = 0;
+            memberInvites.forEach(invite => index += invite.uses);
+
+            console.log(index)
+            let inviteEmbed = new Discord.MessageEmbed()
+            .setColor("RANDOM")
+            .setDescription(`Invitations de ${member.user.tag}`)
+            .addField(`Nombre d'invitations`, index.toString())
+            .addField(`Soon`)
+            .setTitle(`Invitations de ${member.user.tag}`)
+
+            message.channel.send(inviteEmbed)
+        } catch (e) {
+            return console.log(e)
+        }
+    }
+})
         
 client.login(process.env.TOKEN);
