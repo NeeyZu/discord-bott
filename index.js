@@ -11,6 +11,7 @@ client.once('ready' , () => {
 client.on('ready', () => {
        client.user.setActivity(`l'highlight de Luzmog`, {type: 'STREAMING', url: 'https://www.youtube.com/watch?v=61H_ykMKevs'} );  
        client.user.setActivity(`NeeyZu`, {type: 'STREAMING', url: 'https://twitch.tv/neeyzu'} );  
+       client.user.setActivity(`l'highlight de Rawko`, {type: 'STREAMING', url: 'https://www.youtube.com/watch?v=tTSqTFMzCk0&t=5s'} );
 })
 
 client.on('guildMemberAdd', (member) => {
@@ -64,8 +65,8 @@ client.on('message', (msg) => {
      if (msg.content === '!gtweet') {
         msg.channel.send(`**Salut Gamepr1x a posté un nouveau tweet : ** https://twitter.com/gamepr1x `);
     } 
-    if (msg.content === '!700') {
-        msg.channel.send(`**__Bonjour à tous,__**  :wave: \n\n  :round_pushpin:**Merci à tous pour les __700 Membres__ c'est __incroyable__ !**\n        **Un concours a été lancé il reste des places , suffit de créer un ticket !** \n \n**Bonne journée à vous , Cordialement le Staff :heart: **`);
+    if (msg.content === '!rtweet') {
+        msg.channel.send(`**Salut Rawko a posté un nouveau tweet : ** https://twitter.com/rawkofn`);
     } 
 });
 
