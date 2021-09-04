@@ -1,10 +1,17 @@
 const Discord = require('discord.js');
+const { builtinModules } = require('module');
+const { type } = require('os');
 
 const client = new Discord.Client();
 
 client.once('ready' , () => {
     console.log('Ready!');
 });
+
+client.on('ready', () => {
+       client.user.setActivity(`l'highlight de Luzmog`, {type: 'STREAMING', url: 'https://www.youtube.com/watch?v=61H_ykMKevs'} );  
+       client.user.setActivity(`NeeyZu`, {type: 'STREAMING', url: 'https://twitch.tv/neeyzu'} );  
+})
 
 client.on('guildMemberAdd', (member) => {
     let welcomeChannel = client.channels.cache.get('869748860233351186');
@@ -92,6 +99,32 @@ client.on('message', async message => {
             message.channel.send(inviteEmbed)
         } catch (e) {
             return console.log(e)
+        }
+    }
+});
+
+client.on("message", message => {
+    if(message.member.permissions.has("MANAGE_MESSAGES")){
+        if(message.content.startsWith("_clear")){
+            let args = message.content.split(" ");
+
+            if(args[1] == undefined){
+                message.reply("Nombre de messages non ou mal défini!")
+            }
+            else {
+                let number = parseInt(args[1]);
+
+                if(isNaN(number)){
+                    message.reply("Nombre de messages non ou mal défini!")
+                }
+                else {
+                    message.channel.bulkDelete(number).then(messages => {
+                        console.log("Suppresion de " + messages.size + " messages réussi !");
+                    }).catch(err => {
+                        console.log("Erreur de clear : " + err);
+                    });
+                }
+            }
         }
     }
 });
