@@ -11,8 +11,6 @@ client.once('ready' , () => {
 });
 
 client.on('ready', () => {
-       client.user.setActivity(`l'highlight de Luzmog`, {type: 'STREAMING', url: 'https://www.youtube.com/watch?v=61H_ykMKevs'} );  
-       client.user.setActivity(`l'highlight de Rawko`, {type: 'STREAMING', url: 'https://www.youtube.com/watch?v=tTSqTFMzCk0&t=5s'} );
        client.user.setActivity(`NeeyZu`, {type: 'STREAMING', url: 'https://twitch.tv/neeyzu'} );  
 })
 
